@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 8 - The "Secure" Login</title>
+
+  <style>
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: radial-gradient(circle at top, #2b2d42, #1a1c2e);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 700px;
+      background: rgba(255,255,255,0.12);
+      padding: 40px;
+      border-radius: 22px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.45);
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    h1 { font-size: 32px; margin-bottom: 15px; }
+
+    p.subtitle {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 12px;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 12px;
+      background: #00c3ff;
+      color: #000;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover { background: #00e1ff; transform: scale(1.05); }
+
+    .hint { margin-top: 18px; font-size: 14px; opacity: 0.8; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>🔐 Challenge 8: The “Secure-ish” Login</h1>
+
+    <p class="subtitle">
+      A developer claimed:<br>
+      <i>"This time I hid the password PROPERLY! No one can steal it."</i><br><br>
+      Spoiler: they still didn’t. Look at how login.php loads the logic.
+    </p>
+
+    <form action="login.php" method="post">
+      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="hint">💡 Hint: The real check doesn't happen here… but somewhere else. 🕵️</p>
+  </div>
+
+</body>
+</html>

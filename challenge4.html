@@ -29,11 +29,16 @@
 
 <script>
 function verify(){
-  const v = document.getElementById('flag').value.trim();
-  if(v === 'FLAG{base64_is_easy}'){
+  const input = document.getElementById('flag').value.trim();
+
+  const encodedInput = btoa(input);
+
+  const correctEncoded = "RlJBR3tiYXNlNjRfaXNfZWFzeX0=";
+
+  if(encodedInput === correctEncoded){
     location.href = 'challenge5.html';
   } else {
-    alert('Not quite! Take a deep breath and convert the mystery string. 😅');
+    alert('Incorrect! Maybe your Base64 magic is not strong enough 😅');
   }
 }
 </script>

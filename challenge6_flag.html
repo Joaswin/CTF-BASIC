@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Verify Flag - Challenge 6</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+        color: #fff;
+        text-align: center;
+        padding: 40px;
+    }
+    .box {
+        max-width: 700px;
+        margin: auto;
+        background: rgba(255,255,255,0.08);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+    input {
+        padding: 10px;
+        width: 80%;
+        border-radius: 10px;
+        border: none;
+    }
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 12px;
+        background: #00c3ff;
+        color: #000;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🔐 Flag Verification</h1>
+    <p>Enter the flag you received after completing Challenge 6:</p>
+
+    <input id="flag" placeholder="Enter flag here..." />
+    <br>
+    <button onclick="verifyFlag()">Submit</button>
+</div>
+
+<script>
+document.querySelector('button').addEventListener('click', function() {
+    const userFlag = document.getElementById("flag").value.trim();
+    const correctFlag = "FLAG{final_boss_defeated}";
+
+    if(userFlag === correctFlag) {
+        alert("🎉 Challenge 6 completed! Well done!"); 
+        window.location.href = "challenge7.html";
+    } else {
+        alert("❌ Wrong flag!");
+    }
+});
+</script>
+
+
+</body>
+</html>

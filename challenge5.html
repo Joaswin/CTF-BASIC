@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Challenge 5 - Cookie Mystery</title>
 <style>
     body {
@@ -25,6 +25,7 @@
         width: 80%;
         border-radius: 10px;
         border: none;
+        font-size: 16px;
     }
     button {
         padding: 12px 25px;
@@ -56,20 +57,33 @@
     <br>
     <button onclick="checkFlag()">Submit</button>
 
-    <p class="hint">💡 Hint: Your browser stores small pieces of text. Maybe peek at them?</p>
+    <p class="hint">💡 Hint: Maybe peek at your browser cookies… 👀</p>
 </div>
 
 <script>
-// secretly set cookie
-// flag is in cookie "secret_flag"
-document.cookie = "secret_flag=FLAG{cookie_monster_was_here}";
+// 🔒 Secretly set cookie (normal cookie, hidden from page)
+document.cookie = "secret_flag=FLAG{cookie_monster_was_here}; path=/; max-age=3600";
 
+// Function to check input against the hidden flag
 function checkFlag(){
     let f = document.getElementById("flag").value.trim();
-    if(f === "FLAG{cookie_monster_was_here}"){
+
+    // Instead of revealing the flag directly, read it from cookie
+    let cookies = document.cookie.split("; ");
+    let flag = "";
+    for(let i=0; i<cookies.length; i++){
+        let parts = cookies[i].split("=");
+        if(parts[0] === "secret_flag"){
+            flag = parts[1];
+            break;
+        }
+    }
+
+    if(f === flag){
+        alert("🎉 Correct! The cookie monster didn’t eat this one! 🍪");
         location.href = "challenge6.html";
     } else {
-        alert("Nope! Maybe inspect your delicious browser cookies? 🍪😋");
+        alert("❌ Nope! Maybe inspect your delicious browser cookies? 🍪😋");
     }
 }
 </script>

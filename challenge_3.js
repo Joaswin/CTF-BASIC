@@ -8,10 +8,7 @@ function checkAnswer() {
     }
 }
 
-// Hardcoded password in JS (shh...)
 const devPassword = "admin123";
-// FLAG is linked to the lazy password
-// FLAG{weak_js_password}
 
-// Expose function to global scope for the HTML button
+
 window.checkAnswer = checkAnswer;

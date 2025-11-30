@@ -60,32 +60,28 @@
     <input id="pass" placeholder="Password" type="password" /> <br>
     <button onclick="login()">Login</button>
 
-    <p class="hint">💡 Hint: Some secrets hide where no one looks... unless they press Ctrl+U 😭</p>
+    <p class="hint">💡 Hint: Some secrets hide where no one looks... unless they press Control plus u 😭</p>
 </div>
-
 <script>
 function login(){
     const u = document.getElementById('user').value.trim();
     const p = document.getElementById('pass').value.trim();
 
-    // Hardcoded credentials (dev was extremely lazy)
+    const flag = String.fromCharCode(
+        70,76,65,71,123,102,105,110,97,108,
+        95,98,111,115,115,95,100,101,102,101,
+        97,116,101,100,125
+    );
+
     if(u === "admin" && p === "supersecret123"){
-        alert("Congrats! 🎉 You solved all challenges!\n\nFLAG{final_boss_defeated}");
+        alert("Congrats! 🎉 here is your flag!\n\n" + flag);
+        window.location.href = "challenge6_flag.html";
+
     } else {
-        alert("Invalid credentials! Maybe someone hid the real ones in the page source 🤔");
+        alert("Invalid credentials!");
     }
 }
 </script>
-
-<!-- 
-    Dear dev,
-    DO NOT PUT PASSWORDS IN COMMENTS.
-
-    Username: admin
-    Password: supersecret123
-
-    FLAG{final_boss_defeated}
--->
 
 </body>
 </html>

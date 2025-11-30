@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Challenge 7</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <style>
+        /* ===== Body & Background ===== */
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top, #1a1c2e, #2b2d42);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            animation: bgAnimation 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgAnimation {
+            0% { background: radial-gradient(circle at top, #1a1c2e, #2b2d42); }
+            50% { background: radial-gradient(circle at top, #2b2d42, #1a1c2e); }
+            100% { background: radial-gradient(circle at top, #1a1c2e, #2b2d42); }
+        }
+
+        /* ===== Container Card ===== */
+        .container {
+            margin: 60px auto;
+            width: 55%;
+            background: rgba(255,255,255,0.08);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.8s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        textarea {
+            width: 85%;
+            padding: 14px;
+            margin-top: 20px;
+            border-radius: 15px;
+            border: none;
+            font-size: 14px;
+            font-family: monospace;
+            background: rgba(255,255,255,0.12);
+            color: #00fff7;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        textarea:hover, textarea:focus {
+            background: rgba(255,255,255,0.18);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,255,255,0.5);
+        }
+
+        /* ===== Notice ===== */
+        #notice {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #00ffb0 !important;
+            font-weight: bold;
+            display: none;
+            text-shadow: 0 0 5px #00ffb0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <<h1>🔮 Challenge 7: The Mysterious Bookmarklet Quest</h1>
+
+    <p>If you're reading this, your browser has successfully received the **secret flag** 🏴‍☠️</p>
+
+
+
+    <textarea id="bookmarkletCode" rows="4" readonly>
+javascript:(function() {
+    var encryptedFlag = "¶µ¤¶ÞÖÕßÔÐÐÕßÒÕÝÂÜÄçÚÕÛà";
+    var key = "picoctf";
+    var decryptedFlag = "";
+    for (var i = 0; i < encryptedFlag.length; i++) {
+        decryptedFlag += String.fromCharCode(
+            (encryptedFlag.charCodeAt(i) - key.charCodeAt(i % key.length) + 256) % 256
+        );
+    }
+    alert(decryptedFlag);
+})();
+    </textarea>
+
+    <div id="notice">✨ Code copied to clipboard! ✨</div>
+
+    <br><br>
+
+
+   <p class="hint">💡 Hint: The real treasure isn’t in the HTML… it’s in the little JavaScript bookmarklet spell 📜✨</p>
+
+    <br>
+    <h3>Enter the flag you discovered:</h3>
+
+    <input id="flagInput" placeholder="Enter flag here..." style="
+        padding: 10px;
+        width: 80%;
+        border-radius: 10px;
+        border: none;
+    ">
+
+    <br><br>
+    <button onclick="verifyFlag()" style="
+        padding: 12px 25px;
+        border-radius: 12px;
+        background: #00c3ff;
+        border: none;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+    ">🚀 Submit Flag</button>
+
+</div>
+
+<script>
+var codeBox = document.getElementById("bookmarkletCode");
+var notice = document.getElementById("notice");
+
+codeBox.addEventListener("click", function () {
+    codeBox.select();
+    document.execCommand("copy");
+    notice.style.display = "block";
+
+    setTimeout(function () {
+        notice.style.display = "none";
+    }, 2000);
+});
+
+function xorDecode(encoded, key) {
+    let data = atob(encoded);
+    let result = "";
+    for (let i = 0; i < data.length; i++) {
+        result += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+    }
+    return result;
+}
+
+const hiddenFlag = "NiUiKAsLDAAbBAIdGwUGGy8EAhwEDBES";
+const xorKey = "pico";
+
+const correctFlag = xorDecode(hiddenFlag, xorKey);
+
+function verifyFlag() {
+    const userFlag = document.getElementById("flagInput").value.trim();
+
+    if(userFlag === correctFlag) {
+        alert("🎉 Challenge 7 completed! Well done!"); 
+        window.location.href = "challenge8.html";
+    } else {
+        alert("❌ Wrong flag soldier! Try again ✊");
+    }
+}
+</script>
+
+</body>
+</html>
