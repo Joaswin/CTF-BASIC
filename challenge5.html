@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Challenge 5 - Cookie Mystery</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+        color: #fff;
+        text-align: center;
+        padding: 40px;
+    }
+    .box {
+        max-width: 700px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+    input {
+        padding: 10px;
+        width: 80%;
+        border-radius: 10px;
+        border: none;
+    }
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 12px;
+        background: #00c3ff;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    button:hover { background: #00e1ff; }
+    .hint {
+        margin-top: 15px;
+        opacity: 0.8;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🍪 Challenge 5: Cookie Mystery</h1>
+    <p>Someone hid the flag inside a cookie.<br>
+    Because nothing says security like hiding secrets inside snacks 😭🍪</p>
+
+    <input id="flag" placeholder="Enter the flag..." />
+    <br>
+    <button onclick="checkFlag()">Submit</button>
+
+    <p class="hint">💡 Hint: Your browser stores small pieces of text. Maybe peek at them?</p>
+</div>
+
+<script>
+// secretly set cookie
+// flag is in cookie "secret_flag"
+document.cookie = "secret_flag=FLAG{cookie_monster_was_here}";
+
+function checkFlag(){
+    let f = document.getElementById("flag").value.trim();
+    if(f === "FLAG{cookie_monster_was_here}"){
+        location.href = "challenge6.html";
+    } else {
+        alert("Nope! Maybe inspect your delicious browser cookies? 🍪😋");
+    }
+}
+</script>
+
+</body>
+</html>

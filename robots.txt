@@ -1,0 +1,1 @@
+FLAG{robots_help_humans}

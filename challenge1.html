@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Challenge 1 - View Source</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+        color: #fff;
+        text-align: center;
+        padding: 40px;
+    }
+    .box {
+        max-width: 700px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+    input {
+        padding: 10px;
+        width: 80%;
+        border-radius: 10px;
+        border: none;
+    }
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 12px;
+        background: #00c3ff;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    button:hover { background: #00e1ff; }
+    .hint {
+        margin-top: 15px;
+        opacity: 0.8;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🔥 Challenge 1: View Source 🔥</h1>
+    <p>Your first mission! Something is hidden in a place most people never check 👀<br>
+    It's not on the screen... but it *is* on the page. Somewhere. Maybe behind the scenes?</p>
+
+    <input id="answer" placeholder="Enter your flag..." />
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <p class="hint">💡 Hint: You're not supposed to look at the pretty page... look *behind* it.</p>
+
+</div>
+
+<script>
+function checkAnswer() {
+    let ans = document.getElementById("answer").value.trim();
+    if(ans === "FLAG{view_source_power}") {
+        window.location.href = "challenge2.html";
+    } else {
+        alert("Nope! The flag is hiding better than your exam marks 😆");
+    }
+}
+</script>
+
+<!-- Something important is hiding here... but you didn't hear it from me 😉 -->
+<!-- FLAG{view_source_power} -->
+
+</body>
+</html>
