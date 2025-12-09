@@ -1,3 +1,3 @@
 cd /opt/lampp
 sudo ./manager-linux-x64.run
-sudo start apache2
+sudo service apache2 stop
