@@ -61,13 +61,18 @@
 
 <script>
 function checkAnswer() {
+    const encoded = "RkxBR3tyb2JvdHNfaGVscF9odW1hbnN9"; 
+
     let ans = document.getElementById("answer").value.trim();
-    if(ans === "FLAG{robots_help_humans}") {
+    let realFlag = atob(encoded);
+
+    if(ans === realFlag) {
         window.location.href = "challenge3.html";
     } else {
         alert("Wrong! Even robots are laughing at you 🤖😂");
     }
 }
+
 </script>
 
 </body>

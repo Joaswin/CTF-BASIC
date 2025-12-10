@@ -33,10 +33,10 @@ function verify(){
 
   const encodedInput = btoa(input);
 
-  const correctEncoded = "RlJBR3tiYXNlNjRfaXNfZWFzeX0=";
+  const correctEncoded = "RlJBR3tiYXNlNjRfaXNfZWFzeX0="; //base64 encrypted
 
   if(encodedInput === correctEncoded){
-    location.href = 'challenge5.html';
+    location.href = 'flag.php';
   } else {
     alert('Incorrect! Maybe your Base64 magic is not strong enough 😅');
   }
