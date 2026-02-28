@@ -1,1 +1,2 @@
-FLAG{robots_help_humans}
+User-agent: *
+Disallow: /nerd.html

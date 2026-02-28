@@ -16,20 +16,18 @@
 </form>
 
 <script>
-
 function onlyLettersAndNumbers(str) {
   for (let i = 0; i < str.length; i++) {
     let c = str.charCodeAt(i);
     if (
-      (c >= 48 && c <= 57) ||
-      (c >= 65 && c <= 90) ||
-      (c >= 97 && c <= 122)
+      (c >= 48 && c <= 57) || // 0-9
+      (c >= 65 && c <= 90) || // A-Z
+      (c >= 97 && c <= 122)   // a-z
     ) continue;
     return false;
   }
   return true;
 }
-
 const user = "<?php echo $_POST['username']; ?>";
 const pass = "<?php echo $_POST['password']; ?>";
 
@@ -44,6 +42,12 @@ if (!onlyLettersAndNumbers(user) || !onlyLettersAndNumbers(pass)) {
   if (ok) {
     const flag = atob(encryptedFlag); // Base64 decode
 
+<<<<<<< HEAD
+=======
+    // 🔥 DECRYPT FLAG ONLY ON SUCCESS
+    const flag = xorCrypt(encryptedFlag, key);
+
+>>>>>>> bf9d501 (updated)
     alert("🎉 Correct login!\n\nYour flag: " + flag);
 
     document.getElementById("msg").innerHTML = "✅ Login Successful!";
