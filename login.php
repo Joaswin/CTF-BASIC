@@ -42,12 +42,9 @@ if (!onlyLettersAndNumbers(user) || !onlyLettersAndNumbers(pass)) {
   if (ok) {
     const flag = atob(encryptedFlag); // Base64 decode
 
-<<<<<<< HEAD
-=======
     // 🔥 DECRYPT FLAG ONLY ON SUCCESS
-    const flag = xorCrypt(encryptedFlag, key);
+    //const flag1 = xorCrypt(encryptedFlag, key);
 
->>>>>>> bf9d501 (updated)
     alert("🎉 Correct login!\n\nYour flag: " + flag);
 
     document.getElementById("msg").innerHTML = "✅ Login Successful!";
